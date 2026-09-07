@@ -62,6 +62,7 @@ public class TargetGroupEvaluatorTaskTests
     [OneTimeTearDown]
     public void OneTimeTearDown()
     {
+        EngineContext.Replace(null);
         _container?.Dispose();
         DataSettings.Reload();
     }
