@@ -194,6 +194,11 @@ public class TargetGroupEvaluatorTaskTests
             x => x.RemoveByPatternAsync(It.IsAny<string>()),
             Times.Never,
             "RemoveByPatternAsync should not be called when there are no active roles.");
+
+        // Assert: no CustomerRoleMapping records were added to the database.
+        var mappingCount = await _db.CustomerRoleMappings.CountAsync();
+        Assert.That(mappingCount, Is.EqualTo(0),
+            "No CustomerRoleMapping records should be added when there are no active roles.");
     }
 
     #endregion
