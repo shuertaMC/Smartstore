@@ -286,43 +286,4 @@ public class TargetGroupEvaluatorTaskTests
     }
 
     #endregion
-
-    #region Helper: SQLite test factory
-
-    /// <summary>
-    /// A <see cref="DbFactory"/> implementation that uses SQLite in-memory instead of
-    /// the EF Core InMemory provider. SQLite supports ExecuteDeleteAsync which the SUT
-    /// requires and which the InMemory provider does not support.
-    /// </summary>
-    private sealed class SqliteTestDbFactory : DbFactory
-    {
-        private readonly SqliteConnection _connection;
-
-        public SqliteTestDbFactory(SqliteConnection connection)
-        {
-            _connection = connection;
-        }
-
-        public override DbSystemType DbSystem => DbSystemType.Unknown;
-
-        public override DbConnectionStringBuilder CreateConnectionStringBuilder(string connectionString)
-            => throw new System.NotImplementedException();
-
-        public override DbConnectionStringBuilder CreateConnectionStringBuilder(
-            string server, string database, string userName, string password)
-            => throw new System.NotImplementedException();
-
-        public override DataProvider CreateDataProvider(DatabaseFacade database)
-            => new TestDataProvider(database);
-
-        public override TContext CreateDbContext<TContext>(string connectionString, int? commandTimeout = null)
-            => throw new System.NotImplementedException();
-
-        public override DbContextOptionsBuilder ConfigureDbContext(DbContextOptionsBuilder builder, string connectionString)
-        {
-            return builder.UseSqlite(_connection);
-        }
-    }
-
-    #endregion
 }
