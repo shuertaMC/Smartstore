@@ -165,11 +165,15 @@ public class TargetGroupEvaluatorTaskTests
     #region Test 1: Interface implementation
 
     [Test]
-    public void Implements_ITask_interface()
+    public async Task Implements_ITask_interface()
     {
         // Assert that TargetGroupEvaluatorTask implements ITask.
         Assert.That(typeof(ITask).IsAssignableFrom(typeof(TargetGroupEvaluatorTask)), Is.True,
             "TargetGroupEvaluatorTask must implement ITask.");
+
+        // Assert that Run can be invoked with a valid TaskExecutionContext without throwing.
+        var ctx = CreateTaskExecutionContext();
+        await _sut.Run(ctx, CancellationToken.None);
     }
 
     #endregion
