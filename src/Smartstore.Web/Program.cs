@@ -39,6 +39,13 @@ using Smartstore.Core.Data.Migrations;
 using Smartstore.Core.Logging.Serilog;
 using Smartstore.Utilities;
 
+// Smartstore — a modular, open-source e-commerce platform built on ASP.NET Core.
+// The solution is layered into a base library (Smartstore), a domain/business-logic
+// core (Smartstore.Core), the main web application (Smartstore.Web), shared web
+// infrastructure (Smartstore.Web.Common), pluggable modules (payment, shipping,
+// auth, export), and multiple database-provider packages. The architecture follows
+// Domain-Driven Design with EF Core for persistence, Autofac for DI, and Serilog
+// for structured logging.
 var rgSystemSource = new Regex("^File|^System|^Microsoft|^Serilog|^SixLabors|^Autofac|^Castle|^MiniProfiler|^Newtonsoft|^Pipelines|^Azure|^StackExchange|^FluentMigrator|^AngleSharp", RegexOptions.Compiled);
 var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? Environments.Production;
 var isDevEnvironment = IsDevEnvironment();
