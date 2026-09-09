@@ -1,4 +1,15 @@
-﻿global using System;
+﻿// Smartstore – Main Application Entry Point
+//
+// Smartstore is a modular, open-source e-commerce platform built on ASP.NET Core 10
+// with Entity Framework Core 10, Autofac DI, and a plugin-based module architecture.
+// It supports multiple database providers (SQL Server, MySQL, PostgreSQL, SQLite)
+// and provides a full-featured storefront with catalog, checkout, content management,
+// customer segmentation, and scheduled background tasks (e.g. TargetGroupEvaluatorTask).
+//
+// This file bootstraps the web application: it configures the host, registers services
+// via the Smartstore engine pipeline, initializes databases, and starts the HTTP server.
+
+global using System;
 global using System.Collections.Generic;
 global using System.IO;
 global using System.Linq;
